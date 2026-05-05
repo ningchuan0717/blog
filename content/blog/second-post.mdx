@@ -1,0 +1,24 @@
+---
+title: "Next.js 入坑指北"
+date: "2026-05-03"
+tags: ["技术", "前端", "Next.js"]
+summary: "记录使用 Next.js 构建个人博客的经验和踩坑记录。"
+draft: false
+---
+
+## Next.js 初体验
+
+Next.js 是一个基于 React 的全栈框架，提供了许多开箱即用的功能。
+
+### 为什么选择 Next.js？
+
+1. App Router 提供了更好的路由组织方式
+2. Server Components 带来了性能提升
+3. 静态生成（SSG）对博客非常友好
+4. Vercel 部署无缝衔接
+
+### 核心概念
+
+- **文件即路由**：`app/blog/page.tsx` 直接对应 `/blog` 路径
+- **服务端组件默认**：除非标记 `"use client"`，否则组件在服务端渲染
+- **增量静态生成**：可以在部署后按需生成新页面
