@@ -22,16 +22,18 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
     const stored = localStorage.getItem("theme") as Theme | null;
     if (stored) {
       setTheme(stored);
+    } else if (window.matchMedia("(prefers-color-scheme: light)").matches) {
+      setTheme("light");
     }
   }, []);
 
   useEffect(() => {
     if (!mounted) return;
     localStorage.setItem("theme", theme);
-    if (theme === "light") {
-      document.documentElement.classList.add("light");
+    if (theme === "dark") {
+      document.documentElement.classList.add("dark");
     } else {
-      document.documentElement.classList.remove("light");
+      document.documentElement.classList.remove("dark");
     }
   }, [theme, mounted]);
 

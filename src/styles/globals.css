@@ -6,8 +6,12 @@
   body {
     @apply bg-bg-dark text-gray-200 antialiased;
   }
-  body.light {
+  html:not(.dark) body {
     @apply bg-gray-50 text-gray-900;
+  }
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 212, 255, 0.2) #060918;
   }
 }
 
@@ -27,13 +31,19 @@
   .card:hover {
     box-shadow: 0 0 20px rgba(0, 212, 255, 0.08);
   }
+  html:not(.dark) .card {
+    @apply bg-white border-gray-200 shadow-sm hover:shadow-md;
+  }
+  html:not(.dark) .card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  }
 }
 
-/* Code block dark theme */
-pre {
+/* Code block dark theme — scoped to article content */
+article pre {
   @apply bg-gray-950 border border-gray-800 rounded-lg;
 }
-code {
+article code {
   @apply text-sm;
 }
 
