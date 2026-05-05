@@ -11,14 +11,12 @@ export default function GiscusComments() {
     const container = ref.current;
     if (!container) return;
 
-    // Giscus placeholder — activate after GitHub repo is created
-    // Replace repo and repoId below to enable
     const script = document.createElement("script");
     script.src = "https://giscus.app/client.js";
     script.setAttribute("data-repo", "ningchuan0717/blog");
-    script.setAttribute("data-repo-id", "R_kgDO0000000");
-    script.setAttribute("data-category", "Announcements");
-    script.setAttribute("data-category-id", "DIC_kwDO0000000");
+    script.setAttribute("data-repo-id", "R_kgDOSVCjmQ");
+    script.setAttribute("data-category", "General");
+    script.setAttribute("data-category-id", "DIC_kwDOSVCjmc4C8Y5a");
     script.setAttribute("data-mapping", "pathname");
     script.setAttribute("data-strict", "0");
     script.setAttribute("data-reactions-enabled", "1");
