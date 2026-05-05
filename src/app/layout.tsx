@@ -5,11 +5,22 @@ import Footer from "@/components/Footer";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://ningchuan.dev"),
   title: {
     default: "柠川 - 个人博客",
     template: "%s | 柠川",
   },
   description: "柠川的个人博客，记录技术与生活。",
+  openGraph: {
+    title: "柠川 - 个人博客",
+    description: "柠川的个人博客，记录技术与生活。",
+    type: "website",
+    locale: "zh_CN",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
