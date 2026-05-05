@@ -15,7 +15,7 @@ export default function GiscusComments() {
     // Replace repo and repoId below to enable
     const script = document.createElement("script");
     script.src = "https://giscus.app/client.js";
-    script.setAttribute("data-repo", "your-username/your-repo");
+    script.setAttribute("data-repo", "ningchuan0717/blog");
     script.setAttribute("data-repo-id", "R_kgDO0000000");
     script.setAttribute("data-category", "Announcements");
     script.setAttribute("data-category-id", "DIC_kwDO0000000");
