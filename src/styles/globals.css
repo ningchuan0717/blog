@@ -37,6 +37,9 @@
   html:not(.dark) .card:hover {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   }
+  html:not(.dark) .gradient-text {
+    @apply bg-gradient-to-r from-primary-cyan to-primary-purple bg-clip-text text-transparent;
+  }
 }
 
 /* Code block dark theme — scoped to article content */
