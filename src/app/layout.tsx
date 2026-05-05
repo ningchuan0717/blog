@@ -5,7 +5,7 @@ import Footer from "@/components/Footer";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ningchuan.dev"),
+  metadataBase: new URL("https://ningchuan-blog.vercel.app"),
   title: {
     default: "柠川 - 个人博客",
     template: "%s | 柠川",
