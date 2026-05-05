@@ -40,7 +40,7 @@ export default function Navbar() {
               key={href}
               href={href}
               className={`px-3 py-2 rounded-lg text-sm transition-colors ${
-                pathname.startsWith(href)
+                pathname === href || pathname.startsWith(href + "/")
                   ? "text-primary-cyan bg-primary-cyan/10"
                   : "text-gray-400 hover:text-gray-200 hover:bg-white/5"
               }`}
