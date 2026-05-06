@@ -1,8 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
+import { getAccessPassword } from "@/lib/env";
 
 export async function POST(req: NextRequest) {
   const { password } = await req.json();
-  const correctPassword = process.env.ACCESS_PASSWORD;
+  const correctPassword = getAccessPassword();
 
   if (!correctPassword) {
     return NextResponse.json({ error: "Server not configured" }, { status: 500 });

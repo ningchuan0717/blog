@@ -1,8 +1,9 @@
 import { NextRequest } from "next/server";
+import { getAccessPassword, getDeepSeekKey } from "@/lib/env";
 
 export async function POST(req: NextRequest) {
   const cookie = req.cookies.get("auth_token")?.value;
-  const password = process.env.ACCESS_PASSWORD;
+  const password = getAccessPassword();
   if (!password) return new Response("Server not configured", { status: 500 });
 
   const encoder = new TextEncoder();
@@ -15,12 +16,13 @@ export async function POST(req: NextRequest) {
   }
 
   const { messages, thinkingMode } = await req.json();
+  const apiKey = getDeepSeekKey();
 
   const response = await fetch("https://api.deepseek.com/v1/chat/completions", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${process.env.DEEPSEEK_API_KEY}`,
+      Authorization: `Bearer ${apiKey}`,
     },
     body: JSON.stringify({
       model: "deepseek-v4-pro",
