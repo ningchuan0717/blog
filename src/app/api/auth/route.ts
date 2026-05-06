@@ -1,0 +1,25 @@
+import { NextRequest, NextResponse } from "next/server";
+
+export async function POST(req: NextRequest) {
+  const { password } = await req.json();
+  const correctPassword = process.env.ACCESS_PASSWORD;
+
+  if (!correctPassword) {
+    return NextResponse.json({ error: "Server not configured" }, { status: 500 });
+  }
+
+  if (password !== correctPassword) {
+    return NextResponse.json({ error: "密码错误" }, { status: 401 });
+  }
+
+  const response = NextResponse.json({ success: true });
+  response.cookies.set("auth_token", Buffer.from(password).toString("base64"), {
+    httpOnly: true,
+    secure: true,
+    sameSite: "strict",
+    maxAge: 60 * 60 * 24 * 30, // 30 days
+    path: "/",
+  });
+
+  return response;
+}

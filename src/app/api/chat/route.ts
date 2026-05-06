@@ -1,6 +1,15 @@
 import { NextRequest } from "next/server";
 
 export async function POST(req: NextRequest) {
+  const cookie = req.cookies.get("auth_token")?.value;
+  const expectedToken = process.env.ACCESS_PASSWORD
+    ? Buffer.from(process.env.ACCESS_PASSWORD).toString("base64")
+    : null;
+
+  if (!expectedToken || cookie !== expectedToken) {
+    return new Response("Unauthorized", { status: 401 });
+  }
+
   const { messages, thinkingMode } = await req.json();
 
   const response = await fetch("https://api.deepseek.com/v1/chat/completions", {
