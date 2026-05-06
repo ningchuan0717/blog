@@ -1,7 +1,9 @@
-import { compileMdx } from "@/lib/mdx";
+"use client";
 
-export default async function MDXRenderer({ source }: { source: string }) {
-  const { content } = await compileMdx(source);
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+
+export default function MDXRenderer({ source }: { source: string }) {
   return (
     <article className="prose prose-invert max-w-none
       prose-headings:scroll-mt-20
@@ -10,7 +12,9 @@ export default async function MDXRenderer({ source }: { source: string }) {
       prose-code:text-primary-cyan/90 prose-code:text-sm
       prose-img:rounded-lg
     ">
-      {content}
+      <ReactMarkdown remarkPlugins={[remarkGfm]}>
+        {source}
+      </ReactMarkdown>
     </article>
   );
 }
