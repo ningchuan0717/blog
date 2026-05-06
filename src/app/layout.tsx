@@ -5,15 +5,15 @@ import Footer from "@/components/Footer";
 import "@/styles/globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://ningchuan-blog.vercel.app"),
+  metadataBase: new URL("https://ningchuan.top"),
   title: {
-    default: "柠川 - 个人博客",
-    template: "%s | 柠川",
+    default: "柠川 AI - DeepSeek V4 Pro Max",
+    template: "%s | 柠川 AI",
   },
-  description: "柠川的个人博客，记录技术与生活。",
+  description: "基于 DeepSeek V4 Pro 的 AI 助手，支持最强推理模式和 1M 上下文。",
   openGraph: {
-    title: "柠川 - 个人博客",
-    description: "柠川的个人博客，记录技术与生活。",
+    title: "柠川 AI - DeepSeek V4 Pro Max",
+    description: "基于 DeepSeek V4 Pro 的 AI 助手，支持最强推理模式和 1M 上下文。",
     type: "website",
     locale: "zh_CN",
   },

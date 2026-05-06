@@ -7,6 +7,7 @@ import ThemeToggle from "./ThemeToggle";
 import { FiMenu, FiX } from "react-icons/fi";
 
 const links = [
+  { href: "/", label: "Chat" },
   { href: "/blog", label: "博客" },
   { href: "/projects", label: "项目" },
   { href: "/about", label: "关于" },
