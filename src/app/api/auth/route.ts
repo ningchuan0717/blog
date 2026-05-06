@@ -28,3 +28,15 @@ export async function POST(req: NextRequest) {
 
   return response;
 }
+
+export async function DELETE() {
+  const response = NextResponse.json({ success: true });
+  response.cookies.set("auth_token", "", {
+    httpOnly: true,
+    secure: true,
+    sameSite: "strict",
+    maxAge: 0,
+    path: "/",
+  });
+  return response;
+}

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import ChatProvider from "./ChatProvider";
 import ChatMessages from "./ChatMessages";
 import ChatInput from "./ChatInput";
@@ -23,6 +23,12 @@ export default function ChatPage() {
     setAuthenticated(true);
   };
 
+  const handleLogout = useCallback(async () => {
+    await fetch("/api/auth", { method: "DELETE" });
+    localStorage.removeItem("auth_verified");
+    setAuthenticated(false);
+  }, []);
+
   if (checking) return null;
   if (!authenticated) return <LoginGate onLogin={handleLogin} />;
 
@@ -30,7 +36,7 @@ export default function ChatPage() {
     <ChatProvider>
       <div className="h-[100dvh] flex flex-col pt-16">
         <ChatMessages />
-        <ChatInput />
+        <ChatInput onLogout={handleLogout} />
       </div>
     </ChatProvider>
   );

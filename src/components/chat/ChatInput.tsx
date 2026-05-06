@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import { useChat } from "./ChatProvider";
-import { FiSend, FiTrash2, FiZap } from "react-icons/fi";
+import { FiSend, FiTrash2, FiZap, FiLogOut } from "react-icons/fi";
 
 const MODES = [
   { value: "thinking_max" as const, label: "Max", desc: "最强推理" },
@@ -10,7 +10,7 @@ const MODES = [
   { value: "non-thinking" as const, label: "Fast", desc: "快速回复" },
 ];
 
-export default function ChatInput() {
+export default function ChatInput({ onLogout }: { onLogout: () => void }) {
   const [input, setInput] = useState("");
   const { sendMessage, isLoading, thinkingMode, setThinkingMode, clearMessages } = useChat();
   const textareaRef = useRef<HTMLTextAreaElement>(null);
@@ -63,6 +63,13 @@ export default function ChatInput() {
             title="清空对话"
           >
             <FiTrash2 size={14} />
+          </button>
+          <button
+            onClick={onLogout}
+            className="p-2 rounded-lg text-gray-600 hover:text-red-400 hover:bg-white/5 transition-colors"
+            title="退出登录"
+          >
+            <FiLogOut size={14} />
           </button>
         </div>
 
