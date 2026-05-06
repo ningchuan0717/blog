@@ -35,3 +35,14 @@ export const projects = [
   }
 ];
 export const tags = ["Next.js", "前端", "技术", "随笔"];
+export const about = {
+  name: "柠川",
+  bio: "热爱技术，喜欢写作，用代码构建有趣的东西。\n\n这个博客记录我的技术探索和生活感悟，希望能在这里与志同道合的朋友交流。",
+  location: "中国",
+  occupation: "软件工程师",
+  skills: ["TypeScript", "React", "Next.js", "Node.js", "Python", "Docker"],
+  social: {
+    github: "https://github.com/ningchuan0717",
+    email: "ningchuan@example.com",
+  },
+};
