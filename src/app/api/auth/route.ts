@@ -12,12 +12,17 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "密码错误" }, { status: 401 });
   }
 
+  const encoder = new TextEncoder();
+  const hash = Array.from(encoder.encode(password + "_ningchuan"), (b) =>
+    b.toString(16).padStart(2, "0")
+  ).join("");
+
   const response = NextResponse.json({ success: true });
-  response.cookies.set("auth_token", Buffer.from(password).toString("base64"), {
+  response.cookies.set("auth_token", hash, {
     httpOnly: true,
     secure: true,
     sameSite: "strict",
-    maxAge: 60 * 60 * 24 * 30, // 30 days
+    maxAge: 60 * 60 * 24 * 30,
     path: "/",
   });
 

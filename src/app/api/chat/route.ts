@@ -2,11 +2,15 @@ import { NextRequest } from "next/server";
 
 export async function POST(req: NextRequest) {
   const cookie = req.cookies.get("auth_token")?.value;
-  const expectedToken = process.env.ACCESS_PASSWORD
-    ? Buffer.from(process.env.ACCESS_PASSWORD).toString("base64")
-    : null;
+  const password = process.env.ACCESS_PASSWORD;
+  if (!password) return new Response("Server not configured", { status: 500 });
 
-  if (!expectedToken || cookie !== expectedToken) {
+  const encoder = new TextEncoder();
+  const expectedToken = Array.from(encoder.encode(password + "_ningchuan"), (b) =>
+    b.toString(16).padStart(2, "0")
+  ).join("");
+
+  if (cookie !== expectedToken) {
     return new Response("Unauthorized", { status: 401 });
   }
 
